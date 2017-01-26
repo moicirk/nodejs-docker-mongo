@@ -1,9 +1,11 @@
 'use strict';
 
-var port = 3000;
-var express = require('express');
-var app = express();
+const port = 3000;
+const app = require('express')();
+const config = require('./config');
 
-app.listen(port, function(){
+config(app);
+
+app.listen(port, () => {
 	console.log('App running on port %d', port);
 });

@@ -8,6 +8,6 @@ module.exports = {
 		uri: 'mongodb://mongodb/myjar'
 	},
 	testing: {
-
+		uri: 'mongodb://mongodb/myjar_test'
 	}
 };

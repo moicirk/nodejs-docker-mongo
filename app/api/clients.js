@@ -26,6 +26,49 @@ module.exports = (router) => {
 					return res.send(client);
 				})
 				.catch(next);
+		})
+		.options((req, res) => {
+
+			res.send({
+				methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+				resource: {
+					type: 'Client',
+					attributes: {
+						email: {
+							type: 'string',
+							description: 'Client email address',
+							required: 1
+						},
+						phone: {
+							type: 'string',
+							description: 'Client phone number in GB format',
+							required: 1
+						},
+						name: {
+							type: 'string',
+							description: 'Client first name',
+							required: 0
+						},
+						surname: {
+							type: 'string',
+							description: 'Client last name',
+							required: 0
+						},
+						age: {
+							type: 'string',
+							description: 'Client age',
+							required: 0,
+							min: 18
+						},
+						gender: {
+							type: 'string',
+							description: 'Client gender',
+							required: 0,
+							values: ['Mr', 'Mrs']
+						}
+					}
+				}
+			});
 		});
 
 	router
@@ -34,7 +77,7 @@ module.exports = (router) => {
 
 			Client.findById(req.params.id, (err, client) => {
 				if (err) { return next(err); }
-				if (!client) { return next(); }
+				if (!client) { return res.status(404).send('Client not found'); }
 				res.json(client);
 			});
 
@@ -47,7 +90,7 @@ module.exports = (router) => {
 
 			Client.findById(req.params.id, (err, client) => {
 				if (err) { return next(err); }
-				if (!client) { return next(); }
+				if (!client) { return res.status(404).send('Client not found'); }
 
 				client.email = req.body.email || client.email;
 				client.phone = req.body.phone || client.phone;
@@ -65,7 +108,7 @@ module.exports = (router) => {
 
 			Client.findByIdAndRemove(req.params.id, (err, client) => {
 				if (err) { return next(err); }
-				if (!client) { return next(); }
+				if (!client) { return res.status(404).send('Client not found'); }
 				res.end();
 			});
 

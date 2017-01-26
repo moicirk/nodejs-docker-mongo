@@ -6,7 +6,7 @@ const clients = require('./clients');
 clients(router);
 
 router.use((req, res, next) => {
-	res.status(404).send({ error: 'Resource not found' });
+	res.status(404).send({ error: 'Endpoint not found' });
 });
 
 router.use((err, req, res, next) => {

@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function(router) {
+module.exports = (router) => {
 
 	router.route('/api/clients')
-		.get(function(req, res){
+		.get((req, res) => {
 
 			res.json({test: 1});
 		});

@@ -5,8 +5,7 @@ const mongoose = require('mongoose');
 const dbConfig = require('./db')[env];
 const router = require('./../api');
 
-module.exports = function(app) {
-
+module.exports = (app) => {
 	mongoose.connect(dbConfig.uri);
 	mongoose.connection
 		.on('open', function(){

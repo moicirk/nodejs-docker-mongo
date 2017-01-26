@@ -1,7 +1,7 @@
 'use strict';
 
-var router = require('express').Router();
-var clients = require('./clients');
+const router = require('express').Router();
+const clients = require('./clients');
 
 clients(router);
 

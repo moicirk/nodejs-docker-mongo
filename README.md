@@ -14,7 +14,7 @@ necessary to install separately.
 To install and run app:
 1. clone repository
 ```
-git clone
+git clone https://github.com/moicirk/nodejs-docker-mongo
 ```
 
 2. run docker compose

@@ -2,7 +2,7 @@ version: "2"
 services:
   app:
     build: .
-    container_name: "myjar-app"
+    container_name: "ex-app"
     command: "npm run dev"
     volumes:
       - ./app/:/src/app/
@@ -11,7 +11,7 @@ services:
       - "3000:3000"
 
   mongodb:
-    container_name: "myjar-mongodb"
+    container_name: "ex-mongodb"
     image: mongo:3.4
     ports:
       - "27017:27017"
